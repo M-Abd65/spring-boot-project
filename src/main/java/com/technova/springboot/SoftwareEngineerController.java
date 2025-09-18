@@ -1,5 +1,6 @@
 package com.technova.springboot;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,5 +31,13 @@ public class SoftwareEngineerController {
     public void addNewSoftwareEngineer(
             @RequestBody SoftwareEngineer softwareEngineer) {
         softwareEngineerService.insertSoftwareEngineer(softwareEngineer);
+    }
+
+    @PutMapping
+    public ResponseEntity<SoftwareEngineer> updateSoftwareEngineer(
+            @RequestBody SoftwareEngineer softwareEngineer
+    ) {
+        SoftwareEngineer updated = softwareEngineerService.updateSoftwareEngineer(softwareEngineer);
+        return ResponseEntity.ok(updated);
     }
 }
